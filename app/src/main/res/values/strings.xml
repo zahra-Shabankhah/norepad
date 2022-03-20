@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Notepad</string>
+    <string name="description">description</string>
+    <string name="title">title</string>
+    <string name="no_data">no_data</string>
+
+
+    <string-array name="priorities">
+        <item>High Priority</item>
+        <item>Medium Priority</item>
+        <item>Low Priority</item>
+    </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">search</string>
+    <string name="sort_by">sort by</string>
+    <string name="priority_high">priority high</string>
+    <string name="priority_low">priority low</string>
+    <string name="delete_all">delete all</string>
+    <string name="add">add</string>
+    <string name="save">save</string>
+    <string name="delete">delete</string>
+</resources>
