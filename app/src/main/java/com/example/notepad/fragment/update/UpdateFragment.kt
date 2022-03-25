@@ -32,7 +32,7 @@ class UpdateFragment : Fragment() {
 
 
         _binding = FragmentUpdateBinding.inflate(inflater, container, false)
-        binding.args=args
+        binding.args = args
         val view = binding.root
 
 

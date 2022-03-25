@@ -54,7 +54,6 @@
             android:gravity="top|start"
             android:hint="@string/description"
             android:text="@{args.currentItem.description}"
-
             android:inputType="textMultiLine"
             android:paddingStart="24dp"
             android:paddingTop="16dp"

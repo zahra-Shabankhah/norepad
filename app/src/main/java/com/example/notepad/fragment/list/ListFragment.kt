@@ -32,30 +32,33 @@ class ListFragment : Fragment() {
 
         _binding = FragmentListBinding.inflate(inflater, container, false)
         val view = binding.root
+        binding.lifecycleOwner = this
+        binding.mSharedViewModel= mSharedViewModel
 
-        val recyclerView= binding.recyclerView
-        recyclerView.adapter= adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireActivity())
+        setUpRecyclerView()
+
         mToDoViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
+            mSharedViewModel.checkIfDbEmpty(data)
             adapter.setData(data)
         })
 
-
-       // I used bindingAdapter instead of  setOnClickListener
-      /*  binding.floatingActionButton.setOnClickListener{
-            findNavController().navigate(R.id.action_listFragment_to_addFragment)
-        }*/
-
-        mSharedViewModel.emptyDatabase.observe(viewLifecycleOwner, Observer {
-            showEmptyDb(it)
-        })
+       /* mSharedViewModel.emptyDatabase.observe(viewLifecycleOwner, Observer {
+            showEmptyDbViews(it)
+        })*/
 
         setHasOptionsMenu(true)
 
         return view
     }
 
-    private fun showEmptyDb(emptyDatabase:Boolean) {
+    private fun setUpRecyclerView() {
+        val recyclerView= binding.recyclerView
+        recyclerView.adapter= adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireActivity())
+
+    }
+
+ /*   private fun showEmptyDbViews(emptyDatabase:Boolean) {
         if (emptyDatabase){
              no_data_imageView.visibility = View.VISIBLE
             no_data_textView.visibility = View.VISIBLE
@@ -63,7 +66,7 @@ class ListFragment : Fragment() {
             no_data_imageView.visibility = View.INVISIBLE
             no_data_textView.visibility = View.INVISIBLE
         }
-    }
+    }*/
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.list_fragment_menu,menu)
